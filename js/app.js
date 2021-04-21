@@ -28,5 +28,12 @@ function buyCourse(e){
 }
 // Reads the HTML information of the selected course
 function getCourseInfo(course){
-    console.log(course);
+    // create an object with course object
+    const courseInfo = {
+        image: course.querySelector('img').src,
+        title: course.querySelector('h4').textContent,
+        price: course.querySelector('.price span').textContent,
+        id: course.querySelector('a').getAttribute('data-id')  
+    }
+    console.log(courseInfo);
 }
