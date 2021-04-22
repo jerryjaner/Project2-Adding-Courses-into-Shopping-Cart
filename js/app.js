@@ -1,7 +1,8 @@
 // Variable
 
 const courses = document.querySelector('#courses-list');
-      shoppingCartContent = document.querySelector('#cart-content tbody');
+      shoppingCartContent = document.querySelector('#cart-content tbody'),
+      clearCartBtn = document.querySelector('#clear-cart');
 
 // Listeners
 
@@ -10,6 +11,13 @@ loadEventListeners();
  function loadEventListeners(){
  // when a new course is added
  courses.addEventListener('click',buyCourse);
+
+ // when the removed button is clicked
+ shoppingCartContent.addEventListener('click',removeCourse);
+
+ // clear cart btn
+ clearCartBtn.addEventListener('click', clearCart);
+
 
 
 }
@@ -60,4 +68,21 @@ function addIntoCart(course){
     `;
     // Add into shopping Cart
     shoppingCartContent.appendChild(row);
+}
+//remove course from the DOM
+function removeCourse(e){
+    if(e.target.classList.contains('remove')){
+        e.target.parentElement.parentElement.remove();
+
+    }
+    
+}
+// Clear the Shopping cart
+function clearCart(){
+
+   // shoppingCartContent.innerHTML = '';
+   while(shoppingCartContent.firstChild){
+    shoppingCartContent.removeChild(shoppingCartContent.firstChild);
+
+   }
 }
